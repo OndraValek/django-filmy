@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-lg-3">
+        <img src="{{ reziser.fotografie.url }}" alt="{{ reziser.jmeno }} {{ reziser.prijmeni }}" class="img-fluid">
+    </div>
+    <div class="col-lg-9">
+        <h2>{{ reziser.jmeno }} {{ reziser.prijmeni }}</h2>
+        {% if reziser.narozeni %}
+        <p>
+            <strong>Datum narození:</strong> {{ reziser.narozeni|date:"j. n. Y" }}
+            {% if reziser.umrti %}
+            <br><strong>Datum úmrtí:</strong> {{ reziser.umrti|date:"j. n. Y" }}
+            {% endif %}
+        </p>
+        {% endif %}
+        <p>{{ reziser.biografie }}</p>
+        
+        <h3>Filmy režiséra</h3>
+        <div class="row">
+            {% for film in reziser.film_set.all %}
+            <div class="col-sm-6 col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ film.plakat.url }}" alt="{{ film.nazev }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ film.nazev }}</h5>
+                        <p class="card-text">
+                            <small class="text-muted">{{ film.rok_vydani }}</small>
+                        </p>
+                        <p class="card-text">{{ film.obsah|truncatewords:20 }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'film_detail' film.pk %}" class="btn btn-primary btn-sm">Detail filmu</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %} 
