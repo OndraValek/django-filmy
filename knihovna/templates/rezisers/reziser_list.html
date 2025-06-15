@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Seznam režisérů</h2>
+<div class="row">
+    {% for reziser in reziser_list %}
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100">
+            <img class="card-img-top" src="{{ reziser.fotografie.url }}" alt="{{ reziser.jmeno }} {{ reziser.prijmeni }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ reziser.jmeno }} {{ reziser.prijmeni }}</h5>
+                <p class="card-text">
+                    <small class="text-muted">Počet filmů: {{ reziser.pocet_filmu }}</small>
+                </p>
+                <p class="card-text">{{ reziser.biografie|truncatewords:20 }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'reziser_detail' reziser.pk %}" class="btn btn-primary btn-sm">Detail režiséra</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %} 

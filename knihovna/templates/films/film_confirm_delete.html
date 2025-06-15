@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">Smazat film</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Opravdu chcete smazat film "{{ object.nazev }}"?</p>
+                    <p>Tato akce je nevratná.</p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Ano, smazat film</button>
+                        <a href="{% url 'films_list' %}" class="btn btn-secondary">Zrušit</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

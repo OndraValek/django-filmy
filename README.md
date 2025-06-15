@@ -2,7 +2,7 @@
 ## Školní příklad - řešení
 ### Instalace
 1. Klonování repozitáře
-- `git clone https://github.com/OndraValek/django-filmy`
+- `git clone https://github.com/lucny/mat_knihovna.git`
 2. Přesun do adresáře webu
 - `python -m venv .venv`
 3. Vytvoření virtuálního prostředí do složky .venv
@@ -16,5 +16,5 @@
 - `python manage.py runserver`
 
 ### Přístupové údaje do administrace
-- superuživatel: `admin2`
-- heslo: `admin2`
+- superuživatel: `admin`
+- heslo: `admin`
